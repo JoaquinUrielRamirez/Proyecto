@@ -1,4 +1,4 @@
-def revenue(a,b,p,ls,lb):
-    rev = (a-p)*lb + (p-b)*ls
+def revenues(a,b,p,ls,lb,i,f):
+    rev = (a-p)*lb + (p-b)*ls - ((p-a)*f + (b-p)*f)*i
     return rev
 
