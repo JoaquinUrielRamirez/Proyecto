@@ -7,19 +7,22 @@ from b_a import bid_ask
 
 lam = 50
 k = 10
-n = 100
+n = 1000
 p0 = 51
 i = 0.4
 
 optimo = optimo(revenues)
+a,b = optimo.x
 
 print(optimo)
+print(a, b)
+
 
 prices = price_simulation(lam, k, n)
 
 plt.figure()
-plt.xlabel('Precio')
-plt.ylabel('Volumen')
+plt.xlabel('Price')
+plt.ylabel('Volume')
 plt.hist(prices)
-plt.title('Distribución Weibull del Precio')
+plt.title('Weibull Price Distribution')
 plt.show()
