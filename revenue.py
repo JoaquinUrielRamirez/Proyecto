@@ -18,8 +18,8 @@ def revenues(params):
     i = 0.4
 
     # Integrales de pérdidas esperadas
-    integral1, _ = quad(lambda P: (P - a) * weibull_pdf(P, k, lambda_), a, np.inf)
-    integral2, _ = quad(lambda P: (b - P) * weibull_pdf(P, k, lambda_), 0, b)
+    integral1, _ = quad(lambda s_: (p - a) * weibull(s_, lambda_, k), a, np.inf)
+    integral2, _ = quad(lambda s_: (b - p) * weibull(s_, lambda_, k), 0, b)
 
     # Ecuación de ingresos esperados
     revenue = (a - p) * lb + (p - b) * ls - (integral1 + integral2) * i
