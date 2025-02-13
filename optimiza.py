@@ -1,15 +1,16 @@
 from scipy.optimize import minimize
+from revenue import revenues
 
-def optimo(f):
+
+def optimizar(a,b):
     p0 = 51
-    b = p0 - 3
-    a = p0 + 3
-    restricciones = [
-        {'type': 'ineq', 'fun': lambda x: b - p0},  # a - p ≥ 0  →  a ≥ p
-        {'type': 'ineq', 'fun': lambda x: p0 - a}  # p - b ≥ 0  →  b ≤ p
-    ]
 
-    bounds = [(p0, None),  # a ≥ p (sin límite superior)
-              (0, p0)]  # 0 ≤ b ≤ p
-    op = minimize(f, (a,b), bounds=bounds,method="SLSQP")
-    return op
+    restricciones = [
+        {'type': 'ineq', 'fun': lambda x: x[0] - p0},  # a ≥ p
+        {'type': 'ineq', 'fun': lambda x: p0 - x[1]}  # b ≤ p
+    ]
+    bounds = [(p0, None), (0, p0)]  # a ≥ p, 0 ≤ b ≤ p
+
+    resultado = minimize(revenues, x0=[a, b], bounds=bounds, method="SLSQP")
+
+    return resultado
